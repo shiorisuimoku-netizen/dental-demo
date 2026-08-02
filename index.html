@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<!-- 制作サンプルなので検索には出さない。実在の医院と混同されるのを防ぐ -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あおば野歯科・矯正歯科｜制作サンプル</title>
+<meta name="description" content="歯科医院サイトの制作サンプルです。実在の医療機関ではありません。医療広告ガイドラインに沿った構成で制作しています。">
+<link rel="stylesheet" href="assets/style.css">
+<!-- 構造化データ。検索エンジンに診療時間や所在地を正しく伝えるための記述。
+     実在しない医院なので noindex と併用しているが、実案件での書き方の見本として入れている -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "あおば野歯科・矯正歯科",
+  "description": "一般歯科・小児歯科・矯正歯科・予防歯科の診療を行う歯科医院（制作サンプル）",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "○○県",
+    "addressLocality": "○○市",
+    "streetAddress": "あおば野1-2-3"
+  },
+  "telephone": "+81-00-0000-0000",
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Friday"], "opens": "09:30", "closes": "13:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Friday"], "opens": "14:30", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "09:30", "closes": "13:00" }
+  ],
+  "medicalSpecialty": ["Dentistry"],
+  "availableService": [
+    { "@type": "MedicalProcedure", "name": "一般歯科" },
+    { "@type": "MedicalProcedure", "name": "小児歯科" },
+    { "@type": "MedicalProcedure", "name": "矯正歯科" },
+    { "@type": "MedicalProcedure", "name": "予防歯科" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="demo-banner">
+  これは制作実績を示すためのサンプルサイトです。<span>実在する医療機関ではありません。掲載している情報はすべて架空のものです。</span>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M7.5 3.5C5.5 3.5 4 5.2 4 7.6c0 3 .8 5 1.6 8.2.5 2 .8 3.7 2 3.7 1.4 0 1.5-2 1.9-3.8.3-1.4.7-2.2 2.5-2.2s2.2.8 2.5 2.2c.4 1.8.5 3.8 1.9 3.8 1.2 0 1.5-1.7 2-3.7C19.2 12.6 20 10.6 20 7.6c0-2.4-1.5-4.1-3.5-4.1-1.6 0-2.6.9-4.5.9s-2.9-.9-4.5-.9Z"
+              stroke="#2b8a86" stroke-width="1.6" stroke-linejoin="round"/>
+      </svg>
+      <span>
+        <span class="logo-name">あおば野歯科・矯正歯科</span>
+        <span class="logo-sub">AOBANO DENTAL CLINIC</span>
+      </span>
+    </a>
+    <nav class="nav">
+      <a href="first-visit.html">初めての方へ</a>
+      <a href="treatment.html">診療案内</a>
+      <a href="clinic.html">医院紹介</a>
+      <a href="access.html">アクセス</a>
+    </nav>
+    <a class="header-cta" href="tel:00-0000-0000">00-0000-0000</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 患者がいちばん先に知りたいのは「今日やっているか」。
+       診療時間の表を読ませる前に、状態を文で出す -->
+  <div class="today">
+    <div>
+      <div class="today-state">本日は 19:00 まで診療しています</div>
+      <div class="today-detail">最終受付 18:30 ／ 次の休診日は 8月7日（木）</div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div>
+      <h1>痛くなる前に通える、<br>あおば野の歯科医院</h1>
+      <p>
+        一般歯科・小児歯科・矯正歯科・予防歯科に対応しています。
+        治療の前に、いまお口がどういう状態かを説明してから進めます。
+        分からないことはその場で聞いてください。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:00-0000-0000">電話で予約する</a>
+        <a class="btn btn-ghost" href="first-visit.html">初めての方へ</a>
+      </div>
+    </div>
+    <div>
+      <svg viewBox="0 0 400 300" role="img" aria-label="診療室のイメージイラスト">
+        <rect width="400" height="300" rx="14" fill="#e6f2f1"/>
+        <circle cx="300" cy="70" r="46" fill="#ffffff" opacity="0.7"/>
+        <rect x="48" y="180" width="300" height="14" rx="7" fill="#2b8a86" opacity="0.25"/>
+        <path d="M70 180c0-42 26-70 62-70s40 16 62 16 26-16 62-16 62 28 62 70" fill="#ffffff"/>
+        <path d="M120 128c-14 0-24 11-24 27 0 20 6 33 11 54 3 13 5 24 13 24 9 0 10-13 12-25 2-9 5-14 17-14s15 5 17 14c2 12 3 25 12 25 8 0 10-11 13-24 5-21 11-34 11-54 0-16-10-27-24-27-11 0-17 6-30 6s-19-6-30-6Z"
+              fill="none" stroke="#2b8a86" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="250" y="150" width="90" height="60" rx="10" fill="#2b8a86" opacity="0.15"/>
+        <path d="M262 180h66M262 195h44" stroke="#2b8a86" stroke-width="4" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+
+  <section>
+    <h2>当院でできること</h2>
+    <p class="section-lead">保険診療を基本にしています。自費診療をご希望の場合は、費用とリスクを説明したうえで進めます。</p>
+    <div class="cards">
+      <div class="card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7.5 3.5C5.5 3.5 4 5.2 4 7.6c0 3 .8 5 1.6 8.2.5 2 .8 3.7 2 3.7 1.4 0 1.5-2 1.9-3.8.3-1.4.7-2.2 2.5-2.2s2.2.8 2.5 2.2c.4 1.8.5 3.8 1.9 3.8 1.2 0 1.5-1.7 2-3.7C19.2 12.6 20 10.6 20 7.6c0-2.4-1.5-4.1-3.5-4.1-1.6 0-2.6.9-4.5.9s-2.9-.9-4.5-.9Z" stroke="#2b8a86" stroke-width="1.6"/>
+        </svg>
+        <h3>一般歯科</h3>
+        <p>むし歯・歯周病の治療、詰め物や被せ物の作製、入れ歯の調整を行います。</p>
+      </div>
+      <div class="card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12 9v5M12 14l-3.5 6M12 14l3.5 6M8 11.5h8" stroke="#2b8a86" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3>小児歯科</h3>
+        <p>お子さんの治療と予防を行います。まず慣れることから始め、無理に押さえつけることはしません。</p>
+      </div>
+      <div class="card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 8h16M4 16h16M8 8v8M16 8v8" stroke="#2b8a86" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <h3>矯正歯科</h3>
+        <p>歯並びとかみ合わせの相談を受け付けています。装置の種類・期間・費用・リスクを説明したうえで進めます。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>初めての方の流れ</h2>
+    <p class="section-lead">初診でいきなり削ることはありません。状態を調べて、説明してからご相談します。</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-no"></div>
+        <div>
+          <h3>ご予約・受付</h3>
+          <p>お電話でご予約ください。保険証（マイナ保険証）と、服用中のお薬が分かるものをお持ちください。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-no"></div>
+        <div>
+          <h3>お困りごとを伺います</h3>
+          <p>痛みの有無、いつからか、気になっていることを伺います。ご希望や不安があれば、この時点でお伝えください。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-no"></div>
+        <div>
+          <h3>検査</h3>
+          <p>お口の中の確認、必要に応じてレントゲン撮影を行います。痛みが強い場合は、応急処置を優先します。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-no"></div>
+        <div>
+          <h3>説明とご相談</h3>
+          <p>いまの状態、考えられる治療の選択肢、期間の目安、費用をお伝えします。その場で決めなくて構いません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>診療時間</h2>
+    <div class="table-scroll">
+      <table class="hours">
+        <thead>
+          <tr><th>受付時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th><th>日祝</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="time">9:30 - 13:00</td><td>●</td><td>●</td><td>●</td><td>−</td><td>●</td><td>●</td><td>−</td></tr>
+          <tr><td class="time">14:30 - 19:00</td><td>●</td><td>●</td><td>●</td><td>−</td><td>●</td><td>−</td><td>−</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      休診日：木曜・日曜・祝日／最終受付は診療終了の30分前です。<br>
+      祝日のある週は木曜も診療する場合があります。お手数ですが、お電話でご確認ください。
+    </p>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <h3>あおば野歯科・矯正歯科</h3>
+        <p style="margin:0;color:var(--ink-soft);font-size:14px">
+          ○○県○○市あおば野1-2-3<br>
+          電話 00-0000-0000<br>
+          一般歯科／小児歯科／矯正歯科／予防歯科
+        </p>
+      </div>
+      <div>
+        <h3>診療について</h3>
+        <a href="first-visit.html">初めての方へ</a>
+        <a href="treatment.html">診療案内</a>
+        <a href="clinic.html">医院紹介</a>
+      </div>
+      <div>
+        <h3>ご来院</h3>
+        <a href="access.html">アクセス・駐車場</a>
+        <a href="tel:00-0000-0000">電話で予約する</a>
+      </div>
+    </div>
+    <div class="footer-note">
+      <strong>このサイトは制作サンプルです。</strong>
+      実在する医療機関ではなく、医院名・所在地・電話番号・診療時間はすべて架空のものです。
+      掲載内容は医療広告ガイドライン（厚生労働省）に沿った表現で構成しており、
+      患者の体験談、施術前後の写真、他院との比較、最上級を意味する表現は使用していません。
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
