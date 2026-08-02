@@ -22,7 +22,8 @@ const OKWORD = /^(AOBANO|DENTAL|CLINIC|INTERNAL|MEDICINE|COPD|SVG|Google|Web|inf
 // 規制表現チェックの対象から外す（非日本語チェックは行う）。
 //   index.html        … 各サンプルへの案内ページ
 //   hifu/policy.html  … 広告規制で守っていることを一覧にしたページ
-const SKIP_NG = new Set(["index.html", "hifu/policy.html"]);
+//   checklist/index.html … 禁止表現そのものを設問として列挙したチェックリスト
+const SKIP_NG = new Set(["index.html", "hifu/policy.html", "checklist/index.html"]);
 
 const files = walk(".").map((f) => f.split(path.sep).join("/").replace(/^\.\//, ""));
 let bad = 0;

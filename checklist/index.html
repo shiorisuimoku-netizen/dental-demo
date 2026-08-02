@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>医療広告ガイドライン セルフチェックリスト</title>
+<meta name="description" content="医療機関のWebサイトが医療広告ガイドラインに抵触していないか、ご自身で確認できるチェックリストです。">
+<style>
+:root {
+  --bg:#ffffff; --bg-soft:#f6f8f9; --ink:#1f2933; --ink-soft:#5b6b7a;
+  --line:#dde5ea; --accent:#2f6f8f; --accent-soft:#e9f1f5;
+  --ng:#c2410c; --ng-soft:#fff2ea; --ok:#2f7a54; --ok-soft:#eaf5ef;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#141a1f; --bg-soft:#1c242b; --ink:#e9eef2; --ink-soft:#a7b6c2;
+          --line:#2b3740; --accent:#5aa7c8; --accent-soft:#1d2f39;
+          --ng:#fb923c; --ng-soft:#2e1d12; --ok:#5cba8a; --ok-soft:#16281f; }
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",system-ui,sans-serif;
+     color:var(--ink);background:var(--bg);line-height:1.85}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+header.hd{padding:40px 0 10px}
+h1{font-size:26px;margin:0 0 12px;line-height:1.5}
+.lead{color:var(--ink-soft);margin:0 0 10px}
+h2{font-size:19px;margin:38px 0 4px;padding-top:14px;border-top:2px solid var(--line)}
+.cat-note{color:var(--ink-soft);font-size:14.5px;margin:0 0 16px}
+
+/* 結果表示は画面上部に固定して、チェックしながら件数が見えるようにする */
+.result{position:sticky;top:0;z-index:10;background:var(--accent-soft);
+        border-bottom:1px solid var(--line);padding:14px 0;margin-bottom:8px}
+.result-inner{max-width:820px;margin:0 auto;padding:0 20px;display:flex;
+              align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.result-count{font-size:17px;font-weight:700}
+.result-count b{font-size:24px;color:var(--ng)}
+.result-count.clean b{color:var(--ok)}
+.result-msg{font-size:14px;color:var(--ink-soft)}
+button.reset{border:1px solid var(--line);background:var(--bg);color:var(--ink);
+             padding:8px 16px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:14px}
+
+.item{border:1px solid var(--line);border-radius:8px;margin-bottom:12px;overflow:hidden}
+.item label{display:flex;gap:12px;align-items:flex-start;padding:16px 18px;cursor:pointer}
+.item input{width:22px;height:22px;margin-top:3px;flex-shrink:0;cursor:pointer}
+.item .q{font-weight:700;font-size:16px}
+.item .why{padding:0 18px 16px 52px;color:var(--ink-soft);font-size:14.5px;display:none}
+.item.checked{border-color:var(--ng);background:var(--ng-soft)}
+.item.checked .why{display:block}
+.item .fix{margin-top:8px;padding:10px 14px;background:var(--bg);border-radius:6px;
+           border-left:3px solid var(--accent)}
+.item .fix strong{color:var(--accent)}
+
+.intro{background:var(--bg-soft);border-radius:8px;padding:20px 24px;margin:18px 0 8px}
+.intro p{margin:0 0 10px}
+.intro p:last-child{margin:0}
+footer{border-top:1px solid var(--line);margin-top:44px;padding:24px 0 40px;
+       color:var(--ink-soft);font-size:14px}
+footer a{color:var(--accent)}
+@media print{
+  .result{position:static}
+  button.reset{display:none}
+  .item .why{display:block}
+  .item{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="result" id="result">
+  <div class="result-inner">
+    <div class="result-count clean" id="count">該当 <b>0</b> 件</div>
+    <div class="result-msg" id="msg">当てはまる項目にチェックを入れてください。</div>
+    <button class="reset" type="button" id="reset">クリア</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hd">
+    <h1>医療広告ガイドライン<br>セルフチェックリスト</h1>
+    <p class="lead">
+      医療機関のWebサイトは、医療法と「医業若しくは歯科医業又は病院若しくは診療所に関する
+      広告等に関する指針」（医療広告ガイドライン・厚生労働省）の対象です。
+      2018年の医療法改正でWebサイトも規制の対象に含まれるようになりました。
+    </p>
+    <div class="intro">
+      <p><strong>使い方</strong>：自院のサイトを開きながら、当てはまる項目にチェックを入れてください。上部に該当件数が出ます。</p>
+      <p>チェックを入れると、<strong>なぜ問題になるのか</strong>と<strong>どう直すか</strong>が表示されます。</p>
+      <p style="color:var(--ink-soft);font-size:14px">
+        ※このリストは、よく見られる項目を整理したもので、網羅的なものではありません。
+        また、個別の表現が違反にあたるかどうかの最終的な判断は、
+        自治体の担当窓口や専門家にご確認ください。
+      </p>
+    </div>
+  </header>
+
+  <h2>1. 体験談・口コミ</h2>
+  <p class="cat-note">患者本人の主観や、他の患者に同じ結果が生じるとは限らない内容は、広告可能な事項に含まれません。</p>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">患者さんの感想・体験談を掲載している</span></label>
+    <div class="why">
+      治療内容や効果に関する体験談は、<strong>掲載できません</strong>。
+      効果には個人差があり、他の患者に同じ結果が生じるとは限らないためです。
+      院内に掲示したものを撮影して載せる、SNSの投稿を引用する形も同様です。
+      <div class="fix"><strong>直し方：</strong>削除します。「こんな症状の方が来院されます」といった
+      医院側からの説明に置き換えることは可能です。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">口コミサイトやGoogleの評価を、サイト内に転載している</span></label>
+    <div class="why">
+      第三者のサイトにある口コミでも、自院のサイトに載せれば自院の広告になります。
+      <div class="fix"><strong>直し方：</strong>転載をやめます。なお、患者が自発的に口コミサイトへ投稿すること自体は
+      広告に当たらないとされていますが、医院側が依頼・誘導している場合は問題になり得ます。</div>
+    </div>
+  </div>
+
+  <h2>2. 施術前後（ビフォーアフター）の写真</h2>
+  <p class="cat-note">禁止されているわけではありませんが、条件を満たさない掲載はできません。</p>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">施術前後の写真に、治療内容・費用・リスクの説明を添えていない</span></label>
+    <div class="why">
+      写真だけ、あるいは短いキャプションだけでの掲載は認められていません。
+      <strong>治療内容、費用の目安、主なリスク・副作用</strong>を詳細に併記する必要があります。
+      <div class="fix"><strong>直し方：</strong>各写真に説明を添えるか、掲載をやめます。
+      説明を書ききれない場合は、載せないほうが安全です。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">加工・修整した写真を使っている</span></label>
+    <div class="why">
+      撮影条件を変える、明るさや色を調整するなどして<strong>効果を実際より良く見せる</strong>ことはできません。
+      <div class="fix"><strong>直し方：</strong>加工していない写真に差し替えます。
+      照明や角度も、施術前後で揃える必要があります。</div>
+    </div>
+  </div>
+
+  <h2>3. 費用の表示</h2>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">自由診療の費用が「〇〇円〜」だけで、総額が分からない</span></label>
+    <div class="why">
+      最低金額だけの表示は、実際にかかる金額が伝わりません。
+      <strong>回数を含めた総額の目安</strong>を示す必要があります。
+      <div class="fix"><strong>直し方：</strong>「1回◯円 × 標準◯回 ＝ 総額◯円程度」のように、
+      実際の支払い額が分かる形にします。追加費用が生じる条件も書きます。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">自由診療であること（保険が使えないこと）を明記していない</span></label>
+    <div class="why">
+      保険診療と自由診療が同じページに並んでいると、患者は区別できません。
+      <div class="fix"><strong>直し方：</strong>自由診療のメニューには「保険適用外」「自由診療」と明記します。
+      公的医療保険・高額療養費の対象外である旨も添えると親切です。</div>
+    </div>
+  </div>
+
+  <h2>4. 誇大・断定的な表現</h2>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">「日本一」「No.1」「最高」「最先端」などの表現がある</span></label>
+    <div class="why">
+      客観的な事実として証明できない最上級表現は使えません。
+      「県内唯一」なども、根拠を示せなければ同様です。
+      <div class="fix"><strong>直し方：</strong>削除するか、客観的に確認できる事実に置き換えます。
+      （例：導入している機器の名称、対応している診療科目）</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">「絶対安全」「必ず治る」「痛みはありません」などの断定がある</span></label>
+    <div class="why">
+      医療に「絶対」はなく、結果を保証する表現は誇大広告に当たります。
+      <div class="fix"><strong>直し方：</strong>「痛みを抑える工夫をしています」「個人差があります」など、
+      事実に即した表現にします。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">他院と比較する表現がある</span></label>
+    <div class="why">
+      「他院より優れた」「地域で最も」といった比較優良広告は禁止されています。
+      具体的な院名を出していなくても該当します。
+      <div class="fix"><strong>直し方：</strong>比較をやめ、自院が提供している内容の説明に徹します。</div>
+    </div>
+  </div>
+
+  <h2>5. 未承認の医薬品・医療機器</h2>
+  <p class="cat-note">美容医療で特に多く、書き漏らしが起きやすい項目です。</p>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">国内で未承認の医薬品・医療機器を使う施術がある</span></label>
+    <div class="why">
+      該当する場合、次の<strong>4項目すべて</strong>の明示が求められます。
+      <ol style="margin:8px 0 0;padding-left:20px">
+        <li>未承認の医薬品・医療機器であること</li>
+        <li>入手経路（個人輸入かどうかを含む）</li>
+        <li>国内で承認されている同一・類似のものの有無</li>
+        <li>諸外国における安全性等に関する情報</li>
+      </ol>
+      <div class="fix"><strong>直し方：</strong>4項目を該当ページに記載します。
+      健康被害が生じても<strong>医薬品副作用被害救済制度の対象にならない</strong>ことも併記します。</div>
+    </div>
+  </div>
+
+  <h2>6. 募集・キャンペーン</h2>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">モニターを募集している（割引と引き換えに写真や感想を提供してもらう）</span></label>
+    <div class="why">
+      集めた写真や感想を掲載すれば、体験談・ビフォーアフターの規制がそのまま適用されます。
+      募集自体が直ちに違反ではありませんが、<strong>掲載の段階で問題になりやすい</strong>形です。
+      <div class="fix"><strong>直し方：</strong>掲載する場合は、体験談は載せない・
+      写真には治療内容と費用とリスクを併記する、を守ります。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">「期間限定」「今だけ」などで受診を急がせる表現がある</span></label>
+    <div class="why">
+      医療は、費用の安さや期限で受診を判断させるべきものではないとされています。
+      特に自由診療での値引き訴求は、不適切と判断されやすい表現です。
+      <div class="fix"><strong>直し方：</strong>期限や割引を前面に出す訴求をやめます。</div>
+    </div>
+  </div>
+
+  <h2>7. 医療機関としての基本情報</h2>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">診療科名が、標榜できる名称と一致していない</span></label>
+    <div class="why">
+      広告できる診療科名は法令で定められています。
+      「アンチエイジング科」「予防医療科」など、独自の名称は標榜できません。
+      <div class="fix"><strong>直し方：</strong>標榜可能な診療科名に直します。
+      提供内容の説明として本文に書くことは可能です。</div>
+    </div>
+  </div>
+
+  <div class="item">
+    <label><input type="checkbox">
+      <span class="q">医師の経歴に、広告できない内容が含まれている</span></label>
+    <div class="why">
+      広告できるのは、医籍登録年、専門医資格（厚生労働大臣が認定した団体のもの）、
+      所属学会など<strong>限定された事項</strong>です。「症例数◯件」「◯◯の名医」などは該当しません。
+      <div class="fix"><strong>直し方：</strong>広告可能な事項に絞ります。
+      資格名は、認定団体まで正確に記載します。</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>
+      <strong>該当項目があった場合</strong><br>
+      すぐに行政指導が来るわけではありませんが、指摘を受けると修正命令や公表の対象になり得ます。
+      判断に迷う場合は、都道府県・保健所の医療広告の担当窓口にご相談いただけます。
+    </p>
+    <p>
+      作成：水木栞（すいもく しおり）／
+      <a href="mailto:info@iryosagashi.online">info@iryosagashi.online</a><br>
+      医療機関検索サイト「<a href="https://iryosagashi.online/">医療さがし</a>」（全国197,967件）を開発・運用しています。
+      <a href="../index.html">医療機関サイトの制作サンプル</a>も公開しています。
+    </p>
+    <p style="font-size:13px">
+      このチェックリストは、医療広告ガイドラインでよく問題になる項目を整理したものです。
+      網羅的なものではなく、法的な助言を行うものでもありません。
+      個別の判断は、必ず所管の窓口または専門家にご確認ください。
+    </p>
+  </footer>
+</div>
+
+<script>
+// チェック数を上部に出す。印刷しても使えるよう、JSが動かなくても
+// チェックボックス自体は機能する作りにしている（説明文はCSSで開閉）。
+(function () {
+  var boxes = document.querySelectorAll('.item input[type=checkbox]');
+  var count = document.getElementById('count');
+  var msg = document.getElementById('msg');
+
+  function update() {
+    var n = 0;
+    boxes.forEach(function (b) {
+      var item = b.closest('.item');
+      item.classList.toggle('checked', b.checked);
+      if (b.checked) n++;
+    });
+    count.innerHTML = '該当 <b>' + n + '</b> 件';
+    count.classList.toggle('clean', n === 0);
+    if (n === 0) msg.textContent = '当てはまる項目にチェックを入れてください。';
+    else if (n <= 2) msg.textContent = '該当箇所の説明が開いています。修正の方向をご確認ください。';
+    else msg.textContent = '複数該当しています。サイト全体を見直したほうがよいかもしれません。';
+  }
+
+  boxes.forEach(function (b) { b.addEventListener('change', update); });
+  document.getElementById('reset').addEventListener('click', function () {
+    boxes.forEach(function (b) { b.checked = false; });
+    update();
+  });
+  update();
+})();
+</script>
+
+</body>
+</html>
