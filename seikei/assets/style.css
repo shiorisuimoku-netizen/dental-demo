@@ -1,0 +1,139 @@
+/* あおば野整形外科・リハビリテーション科（制作サンプル）
+ *
+ * 整形外科は来院者に高齢の方が多い。歯科・内科のサンプルとは設計方針を変えている。
+ *
+ *   - 基準文字サイズを 18px にする（一般的なサイトは16px）
+ *   - 文字サイズを利用者が変えられるようにする（標準／大／特大）
+ *   - リンクには必ず下線を引く。色の違いだけでリンクと分からせない
+ *   - タップ領域を大きくする（最小44px四方）
+ *   - 文字色と背景のコントラストを強めに取る
+ *   - 情報を横に並べすぎない。上から順に読める構成にする
+ *
+ * 配色も歯科（青緑）・内科（青）と分け、暖色系にしている。
+ */
+
+:root {
+  --base: 18px;          /* 文字拡大ボタンで切り替える */
+  --bg: #ffffff;
+  --bg-soft: #faf6f0;
+  --ink: #241c14;        /* 黒に寄せてコントラストを確保 */
+  --ink-soft: #5c4d3f;
+  --line: #e2d6c6;
+  --accent: #8a5a2b;
+  --accent-dark: #6d4520;
+  --accent-soft: #f6ece0;
+  --radius: 10px;
+  --wrap: 980px;
+}
+
+/* 文字サイズの切り替え。html にクラスを付けて基準値だけを変える */
+html.font-large  { --base: 21px; }
+html.font-xlarge { --base: 24px; }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1a1512;
+    --bg-soft: #241d17;
+    --ink: #f2ece5;
+    --ink-soft: #c7b6a4;
+    --line: #3b3026;
+    --accent: #d29a5e;
+    --accent-dark: #e8b782;
+    --accent-soft: #2c2219;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  font-size: var(--base);
+  line-height: 1.95;   /* 行間を広めに取る */
+}
+img, svg { max-width: 100%; height: auto; }
+
+/* 色だけでリンクを示さない。下線を必ず引く */
+a { color: var(--accent-dark); text-decoration: underline; text-underline-offset: 3px; }
+
+.demo-banner {
+  background: #f0a04b; color: #3a2408; text-align: center;
+  padding: 10px 16px; font-size: 15px; font-weight: 700; line-height: 1.6;
+}
+.demo-banner span { font-weight: 400; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+
+.site-header { border-bottom: 2px solid var(--line); background: var(--bg); }
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 16px 20px; max-width: var(--wrap); margin: 0 auto; flex-wrap: wrap;
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.logo-name { font-size: 1.15rem; font-weight: 700; }
+
+/* 文字サイズ切り替え。タップしやすい大きさを確保する */
+.font-switch { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--ink-soft); }
+.font-switch button {
+  min-width: 46px; min-height: 46px;
+  border: 2px solid var(--line); background: var(--bg); color: var(--ink);
+  border-radius: 8px; cursor: pointer; font-family: inherit; font-weight: 700;
+}
+.font-switch button[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.nav { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+.nav a {
+  display: block; padding: 12px 18px; min-height: 46px;
+  background: var(--accent-soft); color: var(--accent-dark);
+  border-radius: 8px; text-decoration: none; font-weight: 700;
+}
+
+.tel-block {
+  background: var(--accent-soft); border: 2px solid var(--accent);
+  border-radius: var(--radius); padding: 18px 22px; margin: 24px 0; text-align: center;
+}
+.tel-block .label { font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 4px; }
+.tel-block a { font-size: 1.7rem; font-weight: 700; color: var(--accent-dark); text-decoration: none; letter-spacing: .04em; }
+
+.status-line {
+  background: var(--accent-soft); border-left: 6px solid var(--accent);
+  padding: 16px 22px; margin: 22px 0; border-radius: 0 var(--radius) var(--radius) 0;
+}
+.status-line strong { font-size: 1.25rem; color: var(--accent-dark); }
+
+h1 { font-size: 1.7rem; line-height: 1.6; margin: 28px 0 14px; }
+section { padding: 30px 0; border-bottom: 1px solid var(--line); }
+section:last-of-type { border-bottom: none; }
+h2 { font-size: 1.35rem; margin: 0 0 10px; }
+h3 { font-size: 1.1rem; margin: 22px 0 6px; }
+p { margin: 0 0 16px; }
+ul { padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+/* 横に並べすぎない。高齢の方は上から順に読むほうが追いやすい */
+.stack { display: grid; gap: 14px; }
+.item { border: 2px solid var(--line); border-radius: var(--radius); padding: 18px 22px; }
+.item h3 { margin: 0 0 6px; }
+.item p { margin: 0; color: var(--ink-soft); }
+
+.table-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 480px; font-size: 1rem; }
+th, td { border: 2px solid var(--line); padding: 12px 10px; text-align: center; }
+thead th { background: var(--bg-soft); }
+td.time, th.row { text-align: left; white-space: nowrap; background: var(--bg-soft); font-weight: 700; }
+
+.note {
+  background: var(--bg-soft); border-left: 5px solid var(--accent);
+  padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 18px 0; color: var(--ink-soft);
+}
+
+.site-footer { border-top: 2px solid var(--line); background: var(--bg-soft); margin-top: 40px; padding: 28px 0 26px; }
+.site-footer a { display: inline-block; margin-right: 18px; margin-bottom: 8px; }
+.footer-note { border-top: 1px solid var(--line); margin-top: 18px; padding-top: 16px; color: var(--ink-soft); font-size: 0.85rem; }
+
+@media (max-width: 780px) {
+  .header-inner { padding: 14px 16px; }
+  .nav a { flex: 1 1 auto; text-align: center; }
+}

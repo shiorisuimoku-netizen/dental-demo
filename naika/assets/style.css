@@ -1,0 +1,138 @@
+/* あおば野内科・呼吸器内科（制作サンプル）
+ *
+ * 歯科サンプルとは意図的にトーンを変えている。
+ * 内科は「今日診てもらえるか」「発熱があるがどう行けばいいか」を最短で知りたい人が来る。
+ * 装飾より、状態と手順が先に目に入る構成を優先した。
+ * 配色も歯科（青緑）と分け、落ち着いた青系にしている。
+ */
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #f4f7f9;
+  --ink: #1f2933;
+  --ink-soft: #5b6b7a;
+  --line: #dfe5eb;
+  --accent: #2f6f8f;
+  --accent-dark: #235570;
+  --accent-soft: #e8f1f5;
+  --alert: #c2410c;
+  --alert-soft: #fff1e7;
+  --radius: 10px;
+  --wrap: 1060px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141a1f;
+    --bg-soft: #1c242b;
+    --ink: #e9eef2;
+    --ink-soft: #a7b6c2;
+    --line: #2b3740;
+    --accent: #5aa7c8;
+    --accent-dark: #7cc0dc;
+    --accent-soft: #1d2f39;
+    --alert: #fb923c;
+    --alert-soft: #2e1d12;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.85;
+  font-size: 16px;
+}
+img, svg { max-width: 100%; height: auto; }
+a { color: var(--accent-dark); }
+
+.demo-banner {
+  background: #f0a04b; color: #3a2408; text-align: center;
+  padding: 8px 16px; font-size: 13px; font-weight: 700; line-height: 1.5;
+}
+.demo-banner span { font-weight: 400; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+
+.site-header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 20; }
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 13px 20px; max-width: var(--wrap); margin: 0 auto;
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+.logo-name { font-size: 18px; font-weight: 700; }
+.logo-sub { font-size: 11px; color: var(--ink-soft); display: block; letter-spacing: .08em; }
+.nav { display: flex; gap: 20px; }
+.nav a { color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+.header-cta {
+  background: var(--accent); color: #fff; padding: 9px 17px; border-radius: 6px;
+  text-decoration: none; font-weight: 700; font-size: 15px; white-space: nowrap;
+}
+
+/* 内科でいちばん大事なのは「今やっているか」。角丸を抑えて情報表示に寄せる */
+.status-bar {
+  display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: center;
+  background: var(--accent-soft); border-left: 5px solid var(--accent);
+  padding: 16px 22px; border-radius: 0 var(--radius) var(--radius) 0; margin: 22px 0;
+}
+.status-now { font-size: 21px; font-weight: 700; color: var(--accent-dark); white-space: nowrap; }
+.status-detail { color: var(--ink-soft); font-size: 15px; }
+
+/* 発熱の方への案内は、通常の導線から視覚的に切り離す。
+   混ざっていると、一般の患者と同じ入口から入ってきてしまう */
+.alert-box {
+  background: var(--alert-soft); border: 2px solid var(--alert);
+  border-radius: var(--radius); padding: 20px 24px; margin: 24px 0;
+}
+.alert-box h2 { color: var(--alert); margin-top: 0; font-size: 20px; }
+.alert-box ol { margin: 12px 0 0; padding-left: 22px; }
+.alert-box li { margin-bottom: 8px; }
+
+.hero { padding: 34px 0 20px; }
+.hero h1 { font-size: 30px; line-height: 1.5; margin: 0 0 14px; }
+.hero p { color: var(--ink-soft); margin: 0 0 22px; max-width: 660px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 700; border: 2px solid var(--accent); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-ghost { color: var(--accent-dark); background: transparent; }
+
+section { padding: 34px 0; }
+h2 { font-size: 23px; margin: 0 0 8px; }
+h3 { font-size: 17px; }
+.section-lead { color: var(--ink-soft); margin: 0 0 20px; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.card { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+.card h3 { margin: 0 0 8px; }
+.card p { margin: 0; color: var(--ink-soft); font-size: 15px; }
+
+.table-scroll { overflow-x: auto; }
+table.hours { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15px; }
+table.hours th, table.hours td { border: 1px solid var(--line); padding: 10px 8px; text-align: center; }
+table.hours thead th { background: var(--bg-soft); }
+table.hours td.time { text-align: left; white-space: nowrap; background: var(--bg-soft); font-weight: 600; }
+
+table.plain { border-collapse: collapse; width: 100%; font-size: 15px; }
+table.plain th, table.plain td { border-bottom: 1px solid var(--line); padding: 12px 8px; text-align: left; vertical-align: top; }
+table.plain th { background: var(--bg-soft); white-space: nowrap; }
+
+.note {
+  font-size: 14px; color: var(--ink-soft); background: var(--bg-soft);
+  border-left: 3px solid var(--accent); padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0;
+}
+
+.site-footer { border-top: 1px solid var(--line); background: var(--bg-soft); margin-top: 44px; padding: 30px 0 24px; font-size: 15px; }
+.footer-cols { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 26px; }
+.footer-cols h3 { font-size: 15px; margin: 0 0 10px; }
+.footer-cols a { display: block; color: var(--ink); text-decoration: none; margin-bottom: 6px; }
+.footer-note { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 16px; color: var(--ink-soft); font-size: 13px; }
+
+@media (max-width: 820px) {
+  .nav { display: none; }
+  .hero h1 { font-size: 25px; }
+  .status-bar { grid-template-columns: 1fr; gap: 6px; }
+  .footer-cols { grid-template-columns: 1fr; }
+}
