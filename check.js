@@ -18,10 +18,11 @@ const NG = ["日本一", "No.1", "ナンバーワン", "最高の", "最先端",
 const FOREIGN = /[가-힣]|[Ѐ-ӿ]|[฀-๿]|[؀-ۿ]/;
 // 正当に出てくる英字（ロゴのローマ字表記や病名の略語）は除外する
 const OKWORD = /^(AOBANO|DENTAL|CLINIC|INTERNAL|MEDICINE|COPD|SVG|Google|Web|info|iryosagashi|online|com|jp)$/i;
-// ルートの index.html は各サンプルへの案内ページで、
-// 「こういう表現は使わない」という説明のために禁止語そのものを列挙している。
+// 次のページは「こういう表現は使わない」という説明のために禁止語そのものを列挙している。
 // 規制表現チェックの対象から外す（非日本語チェックは行う）。
-const SKIP_NG = new Set(["index.html"]);
+//   index.html        … 各サンプルへの案内ページ
+//   hifu/policy.html  … 広告規制で守っていることを一覧にしたページ
+const SKIP_NG = new Set(["index.html", "hifu/policy.html"]);
 
 const files = walk(".").map((f) => f.split(path.sep).join("/").replace(/^\.\//, ""));
 let bad = 0;
